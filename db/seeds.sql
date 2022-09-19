@@ -11,7 +11,7 @@ VALUES
 ('Software Engineer', 180000, 1),
 ('Lawyer', 200000, 3),
 ('Accountant', 170000, 2),
-('Account Manger', 190000, 4),
+('Account Manager', 190000, 4),
 ('Project Manager', 165000, 1);
 
 

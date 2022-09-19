@@ -195,8 +195,7 @@ const addEmployee = () => {
                             .then(([rows]) => {
                                 const allEmployees = rows;
                                 // create the choices from  managers
-                                const managerChoices = allEmployees.filter(e => !e.manager_id)
-                                    .map(({ first_name, last_name, employee_id }) => ({
+                                const managerChoices = allEmployees.filter(e => !e.manager_id).map(({ first_name, last_name, employee_id }) => ({
                                         name: `${first_name} ${last_name}`,
                                         value: employee_id
                                     }));
@@ -220,37 +219,29 @@ const addEmployee = () => {
 };
 // update values
 const updateEmployee = () => {
-    console.log('Update an employee.');
-    inquirer.prompt([
-            {
-                type: 'list',
-                name: 'employeeUpdate',
-                message: "Select which employee's information you would like to update.",
-                choices: [
-                    'Jennyfer',
-                    'George',
-                    'Melva',
-                    'Karina',
-                    'Chris',
-                    'Ben'
-                ]
-            },
-            {
-                type: 'list',
-                name: 'newEmployeeRole',
-                message: 'Select which role you would like to assign the employee.',
-                choices: [
-                    'Sales Associate',
-                    'Software Engineer',
-                    'Lawyer',
-                    'Accountant',
-                    'Account Manager',
-                    'Project Manager'
-                ]
-            }
-        ]).then(res =>  {
-        const {employeeUpdate, newEmployeeRole} = res;
-        db.query('UPDATE employee SET first_name = ? WHERE id = ? ', [employeeUpdate, newEmployeeRole])
-    }).then(() => promptMenu())
-};
-
+  console.log("Update an employee.");
+          inquirer
+            .prompt([
+              {
+                type: "input",
+                name: "first_name",
+                message: "What their first name?",
+              },
+              {
+                type: "input",
+                name: "last_name",
+                message: "What their last name?",
+              },
+              {
+                type: "input",
+                name: "newRole",
+                message: "What their new role?",
+              },
+            ])
+            .then(({ first_name, last_name, newRole }) => {
+              const newEmployeeRole = "UPDATE employee (first_name, last_name, role_id) WHERE ?";
+              db.query(newEmployeeRole,(first_name, last_name, newRole));
+            })
+            .then(() => promptMenu());
+        };
+ 
