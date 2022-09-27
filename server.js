@@ -1,12 +1,13 @@
 const { response } = require("express");
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
+const fs = require("fs");
 // connect to db
 const db = mysql.createConnection({
     host: 'localhost',
-        user: 'root',
-        password: 'Littlemama0713!',
-        database: 'employee_db'
+    user: 'root',
+    password: 'Littlemama0713!',
+    database: 'employee_db'
 },
 console.log('Successfully connected to employee_db.'));
 // connect to mysql server and database
