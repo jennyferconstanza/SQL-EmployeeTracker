@@ -272,10 +272,10 @@ const updateEmployee = () => {
           "Project Manager",
         ],
       },
-    ])
-    .then((res) => {
+    ]).then((res) => {
       const { employeeUpdate, newEmployeeRole } = res;
-      db.query("UPDATE employee SET first_name = ? WHERE id = ? ", [
+            
+      db.promise().query("UPDATE employee SET first_name = ? WHERE id = ? ", [
         employeeUpdate,
         newEmployeeRole,
       ]);
