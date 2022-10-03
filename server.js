@@ -6,7 +6,7 @@ const db = mysql.createConnection(
   {
     host: "localhost",
     user: "root",
-    password: "Littlemama0713!",
+    password: "password",
     database: "employee_db",
   },
   console.log("Successfully connected to employee_db.")
@@ -254,17 +254,17 @@ const updateEmployee = () => {
       {
         type: "input",
         name: "first_name",
-        message: "What their first name?",
+        message: "What's their first name?",
       },
       {
         type: "input",
         name: "last_name",
-        message: "What their last name?",
+        message: "What's their last name?",
       },
       {
         type: "input",
         name: "newRole",
-        message: "What their new role?",
+        message: "What's their new role?",
       },
     ])
     .then(({ first_name, last_name, newRole }) => {
