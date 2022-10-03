@@ -6,6 +6,7 @@ ISC License (ISC) [![License: ISC](https://img.shields.io/badge/License-ISC-blue
 ## Table of Contents
 * [Acceptance Criteria](#acceptance-criteria)
 * [Installation Instructions](#installation-instructions)
+* [Links](#links)
 
 ## Acceptance Criteria
 ```md
@@ -29,3 +30,4 @@ THEN I am prompted to select an employee to update and their new role and this i
 ```
 
 ## Links 
+[URL to Video Demo](https://drive.google.com/file/d/1oL6Q0TN--ny0Wt2Di7_KkY_wSczXXIQ_/view)

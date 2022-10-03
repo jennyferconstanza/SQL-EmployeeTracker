@@ -1,4 +1,5 @@
 require("console.table");
+const { response } = require("express");
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 // connect to db
@@ -252,25 +253,32 @@ const updateEmployee = () => {
   inquirer
     .prompt([
       {
-        type: "input",
-        name: "first_name",
-        message: "What's their first name?",
+        type: "list",
+        name: "employeeUpdate",
+        message:
+          "Select which employee's information you would like to update.",
+        choices: ["Jennyfer", "George", "Melva", "Karina", "Chris", "Ben"],
       },
       {
-        type: "input",
-        name: "last_name",
-        message: "What's their last name?",
-      },
-      {
-        type: "input",
-        name: "newRole",
-        message: "What's their new role?",
+        type: "list",
+        name: "newEmployeeRole",
+        message: "Select which role you would like to assign the employee.",
+        choices: [
+          "Sales Associate",
+          "Software Engineer",
+          "Lawyer",
+          "Accountant",
+          "Account Manager",
+          "Project Manager",
+        ],
       },
     ])
-    .then(({ first_name, last_name, newRole }) => {
-      const newEmployeeRole =
-        "UPDATE employee (first_name, last_name, role_id) WHERE ?";
-      db.query(newEmployeeRole, (first_name, last_name, newRole));
+    .then((res) => {
+      const { employeeUpdate, newEmployeeRole } = res;
+      db.query("UPDATE employee SET first_name = ? WHERE id = ? ", [
+        employeeUpdate,
+        newEmployeeRole,
+      ]);
     })
     .then(() => promptMenu());
 };
